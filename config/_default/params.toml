@@ -3,6 +3,10 @@ mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
 
+favicon = "/favicon.ico"
+
+
+
 [footer]
 since = 2023
 customText = ""
@@ -146,3 +150,4 @@ clientSecret = ""
 [comments.cusdis]
 host = ""
 id = ""
+
