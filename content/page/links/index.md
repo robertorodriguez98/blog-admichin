@@ -2,9 +2,21 @@
 title: Links
 links:
   - title: GitHub
-    description: GitHub is the world's largest software development platform.
-    website: https://github.com
+    description: GitHub es la plataforma de desarrollo de software más grande del mundo.
+    website: https://github.com/robertorodriguez98
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
+  - title: LinkedIn
+    description: LinkedIn es una red social orientada al uso empresarial, a los negocios y al empleo.
+    website: https://www.linkedin.com/in/roberto-rodriguez-marquez/
+    image: https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png
+  - title: Gitea
+    description: Servidor de git autoalojado.
+    website: https://gitea.admichin.es/
+    image: https://upload.wikimedia.org/wikipedia/commons/b/bb/Gitea_Logo.svg
+  - title: Planka
+    description: Alternativa a trello autoalojada.
+    website: https://planka.admichin.es/
+    image: https://cdn.iconscout.com/icon/free/png-256/free-trello-4670137-3878257.png
 menu:
     main: 
         weight: 4
@@ -12,22 +24,8 @@ menu:
             icon: link
 
 comments: false
+
 ---
 
-To use this feature, add `links` section to frontmatter.
+Enlaces de interés
 
-This page's frontmatter:
-
-```yaml
-links:
-  - title: GitHub
-    description: GitHub is the world's largest software development platform.
-    website: https://github.com
-    image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
-  - title: TypeScript
-    description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
-    website: https://www.typescriptlang.org
-    image: ts-logo-128.jpg
-```
-
-`image` field accepts both local and external images.

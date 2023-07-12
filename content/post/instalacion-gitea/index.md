@@ -3,6 +3,13 @@ title: "Instalación Gitea"
 date: 2023-06-14 08:16:38+0200
 draft: false
 image: cover.png
+categories:
+    - documentación
+tags:
+    - git
+    - autoalojado
+    - docker
+    - vps
 ---
 
 # Gitea
