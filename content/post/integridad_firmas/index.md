@@ -2,6 +2,13 @@
 title: "Integridad, firmas y autenticación"
 date: 2023-01-30T09:16:26+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - criptografía
+    - gnupg
 ---
 
 ## Tarea 1: Firmas electrónicas

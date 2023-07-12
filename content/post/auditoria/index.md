@@ -13,7 +13,7 @@ tags:
     - MongoDB
 ---
 
-### 1. Activa desde SQL*Plus la auditoría de los intentos de acceso exitosos al sistema. Comprueba su funcionamiento
+## Activa desde SQL*Plus la auditoría de los intentos de acceso exitosos al sistema. Comprueba su funcionamiento
 
 Para activar la auditoría y que los datos se almacenen en la base de datos, ejecutamos el siguiente comando:
 
@@ -44,7 +44,7 @@ SELECT OS_USERNAME, USERNAME, EXTENDED_TIMESTAMP, ACTION_NAME FROM DBA_AUDIT_SES
 ![auditoria](https://i.imgur.com/Y0qJUmC.png)
 
 
-### 2. Realiza un procedimiento en PL/SQL que te muestre los accesos fallidos junto con el motivo de los mismos, transformando el código de error almacenado en un mensaje de texto comprensible. Contempla todos los motivos posibles para que un acceso sea fallido
+## Realiza un procedimiento en PL/SQL que te muestre los accesos fallidos junto con el motivo de los mismos, transformando el código de error almacenado en un mensaje de texto comprensible. Contempla todos los motivos posibles para que un acceso sea fallido
 
 Primero, para vaciar la tabla de auditoría, ejecuto el siguiente comando:
 
@@ -144,7 +144,7 @@ Compruebo que funciona correctamente:
 
 ![accesosFallidos](https://i.imgur.com/FGHbSQV.png)
 
-### 3. Activa la auditoría de las operaciones DML realizadas por SCOTT. Comprueba su funcionamiento
+## Activa la auditoría de las operaciones DML realizadas por SCOTT. Comprueba su funcionamiento
 
 Activo la auditoría de las operaciones DML realizadas por SCOTT:
 
@@ -166,7 +166,7 @@ SELECT USERNAME, OBJ_NAME, ACTION_NAME, EXTENDED_TIMESTAMP FROM DBA_AUDIT_OBJECT
 
 ![auditoriaDML](https://i.imgur.com/33VAXWP.png)
 
-### 4. Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 2000 en la tabla emp de scott
+## Realiza una auditoría de grano fino para almacenar información sobre la inserción de empleados con sueldo superior a 2000 en la tabla emp de scott
 
 La auditoría de grano fino (FGA) es como una versión extendida de la auditoría estándar. Registra los cambios en datos muy concretos a nivel de columna.
 
@@ -202,7 +202,7 @@ SELECT DB_USER, OBJECT_NAME, SQL_TEXT, EXTENDED_TIMESTAMP FROM DBA_FGA_AUDIT_TRA
 
 ![auditoriaGranoFino](https://i.imgur.com/EseLG8U.png)
 
-### 5. Explica la diferencia entre auditar una operación by access o by session ilustrándolo con ejemplos
+## Explica la diferencia entre auditar una operación by access o by session ilustrándolo con ejemplos
 
 Las operaciones by access se auditan por cada acceso a la base de datos, mientras que las operaciones by session se auditan por cada sesión de usuario. Por ejemplo, si un usuario realiza 10 accesos a la base de datos, se auditarán 10 operaciones by access, mientras que si realiza 10 accesos en una misma sesión, se auditarán 1 operación by session.
 
@@ -212,7 +212,7 @@ La sintaxis es la siguiente:
 AUDIT [operación] [tabla] BY [usuario] BY {ACCESS | SESSION};
 ```
 
-### 6. Documenta las diferencias entre los valores db y db, extended del parámetro audit_trail de ORACLE. Demuéstralas poniendo un ejemplo de la información sobre una operación concreta recopilada con cada uno de ellos
+## Documenta las diferencias entre los valores db y db, extended del parámetro audit_trail de ORACLE. Demuéstralas poniendo un ejemplo de la información sobre una operación concreta recopilada con cada uno de ellos
 
 Ambos parámetros indican que la auditoría está activada. La diferencia es que el parámetro db guarda la información en la tabla de auditoría, mientras que el parámetro db, extended guarda la información en la tabla de auditoría y en el archivo de alerta.
 
@@ -226,19 +226,19 @@ Reinicio la base de datos y compruebo que el parámetro se ha cambiado correctam
 
 ![auditTrail](https://i.imgur.com/sIytDAc.png)
 
-### 7. Averigua si en Postgres se pueden realizar los cuatro primeros apartados. Si es así, documenta el proceso adecuadamente
+## Averigua si en Postgres se pueden realizar los cuatro primeros apartados. Si es así, documenta el proceso adecuadamente
 
-#### Ejercicio 1
+### Ejercicio 1
 
 En postgres no se puede realizar el ejercicio 1, ya que se registran los inicios de sesión fallidos en el archivo de log, pero no los exitosos.
 
-#### Ejercicio 2
+### Ejercicio 2
 
 No se puede realizar un procedimiento ya que los accesos fallidos no está registrado en la base de datos, sino en el archivo de log, sin embargo, en el propio archivo de log, se encuentran explicados con palabras y en español, el objetivo final del procedimiento:
 
 ![accesosFallidos](https://i.imgur.com/n9IuvtS.png)
 
-#### Ejercicio 3
+### Ejercicio 3
 
 Para realizar la auditoría voy a usar **Trigger 91plus**, una herramienta creada por la comunidad que permite auditar las operaciones DML en postgres.
 
@@ -263,9 +263,9 @@ SELECT audit.audit_table('scott.emp');
 SELECT audit.audit_table('scott.dept');
 ```
 
-### 8. Averigua si en MySQL se pueden realizar los apartados 1, 3 y 4. Si es así, documenta el proceso adecuadamente
+## Averigua si en MySQL se pueden realizar los apartados 1, 3 y 4. Si es así, documenta el proceso adecuadamente
 
-#### Ejercicio 1
+### Ejercicio 1
 
 Para obtener los datos de los inicios de sesión, edito el fichero `/etc/mysql/mariadb.conf.d/50-server.cnf`:
 
@@ -286,7 +286,7 @@ Ahora, tras varios inicios de sesión, compruebo el fichero de logs `/var/log/my
 
 ![mysqlLog](https://i.imgur.com/fpOjaLH.png)
 
-#### Ejercicio 3
+### Ejercicio 3
 
 Para realizar la auditoría voy a instalar el plugin `server_audit`:
 
@@ -307,7 +307,7 @@ Tras insertar un nuevo empleado, compruebo el fichero de log `/var/lib/mysql/ser
 
 ![mysqlLog](https://i.imgur.com/GAOO4Kz.png)
 
-### 9. Averigua las posibilidades que ofrece MongoDB para auditar los cambios que va sufriendo un documento. Demuestra su funcionamiento
+## Averigua las posibilidades que ofrece MongoDB para auditar los cambios que va sufriendo un documento. Demuestra su funcionamiento
 
 Para realizar las auditorías, es necesario instalar la versión Enterprise. La documentación de instalación oficial se encuentra en el siguiente enlace [https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-debian/](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-enterprise-on-debian/). Una vez instalado podemos hacer lo siguiente:
 
@@ -343,4 +343,4 @@ mongod --dbpath /var/lib/mongodb/ --auditDestination console | jq
 
 ![mongoAudit](https://i.imgur.com/DNdM1aZ.png)
 
-### 10. Averigua si en MongoDB se pueden auditar los accesos a una colección concreta. Demuestra su funcionamiento
+##. Averigua si en MongoDB se pueden auditar los accesos a una colección concreta. Demuestra su funcionamiento

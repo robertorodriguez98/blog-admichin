@@ -2,6 +2,14 @@
 title: "Práctica: Servidor de correos"
 date: 2023-02-07T01:57:14+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Servicios de red e Internet
+tags:
+    - correo
+    - autoalojado
+    - vps
 ---
 
 ## Gestión de correo desde el servidor

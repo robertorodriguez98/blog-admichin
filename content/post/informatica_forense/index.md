@@ -2,7 +2,16 @@
 title: "Informática forense"
 date: 2023-02-08T18:50:12+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - Forense
+    - Autopsy
 ---
+
+## Enunciado
 
 La informática forense es el conjunto de técnicas que nos permite obtener la máxima información posible tras un incidente o delito informático.
 
@@ -10,47 +19,6 @@ En esta práctica, realizarás la fase de toma de evidencias y análisis de las 
 
 Sobre cada una de las máquinas debes realizar un volcado de memoria y otro de disco duro, tomando las medidas necesarias para certificar posteriormente la cadena de custodia.
 
-
-Debes tratar de obtener las siguientes informaciones (Tabla de contenidos)
-
-- [Apartado A. Máquina Windows](#apartado-a-máquina-windows)
-  - [Volcado de memoria](#volcado-de-memoria)
-    - [1. Procesos en ejecución](#1-procesos-en-ejecución)
-    - [2. Servicios en ejecución](#2-servicios-en-ejecución)
-    - [3. Puertos abiertos](#3-puertos-abiertos)
-    - [4. Conexiones establecidas por la máquina](#4-conexiones-establecidas-por-la-máquina)
-    - [5. Sesiones de usuario establecidas remotamente](#5-sesiones-de-usuario-establecidas-remotamente)
-    - [6. Ficheros transferidos recientemente por NetBios](#6-ficheros-transferidos-recientemente-por-netbios)
-    - [7. Contenido de la caché DNS](#7-contenido-de-la-caché-dns)
-    - [8. Variables de entorno](#8-variables-de-entorno)
-  - [Volcado del registro](#volcado-del-registro)
-    - [10. Redes wifi utilizadas recientemente](#10-redes-wifi-utilizadas-recientemente)
-    - [11. Configuración del firewall de nodo](#11-configuración-del-firewall-de-nodo)
-    - [12. Programas que se ejecutan en el Inicio](#12-programas-que-se-ejecutan-en-el-inicio)
-    - [13. Asociación de extensiones de ficheros y aplicaciones](#13-asociación-de-extensiones-de-ficheros-y-aplicaciones)
-  - [Volcado de disco](#volcado-de-disco)
-    - [9. Dispositivos USB conectados](#9-dispositivos-usb-conectados)
-    - [14. Aplicaciones usadas recientemente](#14-aplicaciones-usadas-recientemente)
-    - [15. Ficheros abiertos recientemente](#15-ficheros-abiertos-recientemente)
-    - [16. Software Instalado](#16-software-instalado)
-    - [18. Cuentas de Usuario](#18-cuentas-de-usuario)
-    - [19. Historial de navegación y descargas, cookies](#19-historial-de-navegación-y-descargas-cookies)
-    - [21.  Archivos con extensión cambiada](#21--archivos-con-extensión-cambiada)
-    - [22.  Archivos eliminados](#22--archivos-eliminados)
-    - [23.  Archivos Ocultos](#23--archivos-ocultos)
-    - [24.  Archivos que contienen una cadena determinada](#24--archivos-que-contienen-una-cadena-determinada)
-    - [25.  Búsqueda de imágenes por ubicación](#25--búsqueda-de-imágenes-por-ubicación)
-    - [26.  Búsqueda de archivos por autor](#26--búsqueda-de-archivos-por-autor)
-- [Apartado B) Máquina Linux](#apartado-b-máquina-linux)
-  - [Volcado de memoria](#volcado-de-memoria-1)
-    - [1. Procesos en ejecución](#1-procesos-en-ejecución-1)
-    - [2. Servicios en ejecución](#2-servicios-en-ejecución-1)
-    - [3. Puertos abiertos](#3-puertos-abiertos-1)
-    - [4. Conexiones establecidas por la máquina](#4-conexiones-establecidas-por-la-máquina-1)
-    - [5. Sesiones de usuario establecidas remotamente](#5-sesiones-de-usuario-establecidas-remotamente-1)
-    - [7. Contenido de la caché DNS](#7-contenido-de-la-caché-dns-1)
-    - [8. Variables de entorno](#8-variables-de-entorno-1)
-  - [Volcado de disco](#volcado-de-disco-1)
 
 
 ## Apartado A. Máquina Windows

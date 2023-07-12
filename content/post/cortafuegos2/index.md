@@ -2,36 +2,14 @@
 title: "Cortafuegos II: Perimetral con nftables"
 date: 2023-02-17T11:58:43+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - Cortafuegos
+    - nftables
 ---
-
-- [Enunciado](#enunciado)
-- [Preparación](#preparación)
-  - [SSH al cortafuegos](#ssh-al-cortafuegos)
-  - [Política por defecto](#política-por-defecto)
-  - [Activar el bit de forward](#activar-el-bit-de-forward)
-  - [SNAT](#snat)
-  - [SSH desde el cortafuego a la LAN](#ssh-desde-el-cortafuego-a-la-lan)
-  - [Tráfico para la interfaz loopback](#tráfico-para-la-interfaz-loopback)
-  - [Peticiones y respuestas protocolo ICMP](#peticiones-y-respuestas-protocolo-icmp)
-  - [Reglas forward](#reglas-forward)
-    - [ping desde la LAN](#ping-desde-la-lan)
-    - [Consultas y respuestas DNS desde la LAN](#consultas-y-respuestas-dns-desde-la-lan)
-    - [Permitimos la navegación web desde la LAN](#permitimos-la-navegación-web-desde-la-lan)
-    - [Permitimos el acceso a nuestro servidor web de la LAN desde el exterior](#permitimos-el-acceso-a-nuestro-servidor-web-de-la-lan-desde-el-exterior)
-- [Reglas del enunciado](#reglas-del-enunciado)
-  - [Permite poder hacer conexiones ssh al exterior desde la máquina cortafuegos](#permite-poder-hacer-conexiones-ssh-al-exterior-desde-la-máquina-cortafuegos)
-  - [Permite hacer consultas DNS desde la máquina cortafuegos sólo al servidor 192.168.202.2. Comprueba que no puedes hacer un dig @1.1.1.1.](#permite-hacer-consultas-dns-desde-la-máquina-cortafuegos-sólo-al-servidor-1921682022-comprueba-que-no-puedes-hacer-un-dig-1111)
-  - [Permite que la máquina cortafuegos pueda navegar por internet.](#permite-que-la-máquina-cortafuegos-pueda-navegar-por-internet)
-  - [Los equipos de la red local deben poder tener conexión al exterior.](#los-equipos-de-la-red-local-deben-poder-tener-conexión-al-exterior)
-  - [Permitimos el ssh desde el cortafuego a la LAN](#permitimos-el-ssh-desde-el-cortafuego-a-la-lan)
-  - [Permitimos hacer ping desde la LAN a la máquina cortafuegos](#permitimos-hacer-ping-desde-la-lan-a-la-máquina-cortafuegos)
-  - [Permite realizar conexiones ssh desde los equipos de la LAN](#permite-realizar-conexiones-ssh-desde-los-equipos-de-la-lan)
-  - [Instala un servidor de correos en la máquina de la LAN. Permite el acceso desde el exterior y desde el cortafuego al servidor de correos. Para probarlo puedes ejecutar un telnet al puerto 25 tcp](#instala-un-servidor-de-correos-en-la-máquina-de-la-lan-permite-el-acceso-desde-el-exterior-y-desde-el-cortafuego-al-servidor-de-correos-para-probarlo-puedes-ejecutar-un-telnet-al-puerto-25-tcp)
-  - [Permite poder hacer conexiones ssh desde exterior a la LAN](#permite-poder-hacer-conexiones-ssh-desde-exterior-a-la-lan)
-  - [Modifica la regla anterior, para que al acceder desde el exterior por ssh tengamos que conectar al puerto 2222, aunque el servidor ssh este configurado para acceder por el puerto 22](#modifica-la-regla-anterior-para-que-al-acceder-desde-el-exterior-por-ssh-tengamos-que-conectar-al-puerto-2222-aunque-el-servidor-ssh-este-configurado-para-acceder-por-el-puerto-22)
-  - [Permite hacer consultas DNS desde la LAN sólo al servidor 192.168.202.2. Comprueba que no puedes hacer un dig @1.1.1.1](#permite-hacer-consultas-dns-desde-la-lan-sólo-al-servidor-1921682022-comprueba-que-no-puedes-hacer-un-dig-1111)
-  - [Permite que los equipos de la LAN puedan navegar por internet.](#permite-que-los-equipos-de-la-lan-puedan-navegar-por-internet)
-
 
 ## Enunciado
 

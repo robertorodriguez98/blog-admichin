@@ -2,6 +2,13 @@
 title: "Cortafuegos I: De nodo con iptables"
 date: 2023-02-15T23:46:36+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - Cortafuegos
+    - iptables
 ---
 
 Enunciado: [https://fp.josedomingo.org/seguridadgs/u03/ejercicio1.html](https://fp.josedomingo.org/seguridadgs/u03/ejercicio1.html)
