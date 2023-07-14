@@ -2,6 +2,13 @@
 title: "Redes Privadas Virtuales con OpenVPN"
 date: 2023-01-25T08:44:05+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - VPN
+    - OpenVPN
 ---
 
 ## Caso A: VPN de acceso remoto con OpenVPN y certificados x509

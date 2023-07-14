@@ -2,6 +2,14 @@
 title: "Conexiones desde clientes a servidores con bases de datos"
 date: 2022-10-30T11:54:47+01:00
 draft: false
+image: featured.png
+categories:
+    - práctica
+    - Administración de Bases de Datos
+tags:
+    - MariaDB
+    - Oracle
+    - PostgreSQL
 ---
 
 Vamos a realizar conexiones desde los clientes de BBDD a sus respectivos servidores.

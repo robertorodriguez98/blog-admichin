@@ -2,7 +2,14 @@
 title: "Instalación Oracle 19c en Rocky linux 8"
 date: 2022-10-26T08:33:15+02:00
 draft: false
-tags: ["oracle","rocky"]
+image: featured.png
+categories:
+    - práctica
+    - Administración de Bases de Datos
+tags:
+    - Oracle
+    - rocky
+    - Práctica 1 ABD
 ---
 
 Se va a realizar la instalación de Oracle 19c en Rocky linux 8, debido a su mayor compatibilidad con el programa y menor número de fallos que con Debian 11.

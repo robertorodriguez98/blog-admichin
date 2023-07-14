@@ -2,6 +2,13 @@
 title: "Compilación de un programa en C utilizando un Makefile"
 date: 2022-10-16T23:46:57+02:00
 draft: False
+image: featured.png
+categories:
+    - práctica
+    - Administración de Sistemas Operativos
+tags:
+    - C
+    - compilación
 ---
 
 **Enunciado:** Elige el programa escrito en C que prefieras y comprueba en las fuentes que exista un fichero Makefile o Configure. Deberás compilar desde las fuentes.

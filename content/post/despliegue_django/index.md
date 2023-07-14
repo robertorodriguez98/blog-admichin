@@ -2,6 +2,13 @@
 title: "Despliegue de aplicaciones python sobre django"
 date: 2023-01-23T08:47:22+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Implantación de Aplicaciones Web
+tags:
+    - python
+    - django
 ---
 
 

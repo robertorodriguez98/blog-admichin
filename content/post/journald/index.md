@@ -2,6 +2,14 @@
 title: "Recolección centralizada de logs de sistema, mediante Journald"
 date: 2023-01-15T23:39:03+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Administración de Sistemas Operativos
+tags:
+    - journald
+    - logs
+    - OpenStack
 ---
 
 El escenario de OpenStack es el siguiente:

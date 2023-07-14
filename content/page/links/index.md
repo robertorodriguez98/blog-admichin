@@ -2,11 +2,10 @@
 title: Links
 links:
   - title: GitHub
-    description: GitHub es la plataforma de desarrollo de software más grande del mundo.
+    description: 
     website: https://github.com/robertorodriguez98
     image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png
   - title: LinkedIn
-    description: LinkedIn es una red social orientada al uso empresarial, a los negocios y al empleo.
     website: https://www.linkedin.com/in/roberto-rodriguez-marquez/
     image: https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png
   - title: Gitea

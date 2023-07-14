@@ -3,6 +3,13 @@ title: "Snort: Instalación y primeros pasos"
 date: 2022-10-10T12:54:33+02:00
 draft: false
 tags: ["debian","snort"]
+image: featured.jpg
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - debian
+    - snort
 ---
 
 **Enunciado:**

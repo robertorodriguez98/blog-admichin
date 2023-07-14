@@ -2,6 +2,13 @@
 title: "Redes Privadas Virtuales con WireGuard"
 date: 2023-01-26T22:01:09+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - VPN
+    - wireguard
 ---
 
 ## Caso C: VPN de acceso remoto con WireGuard

@@ -2,6 +2,15 @@
 title: "Aplicacion web MySQL"
 date: 2022-10-31T01:05:11+01:00
 draft: false
+image: featured.png
+categories:
+    - práctica
+    - Administración de Bases de Datos
+tags:
+    - MySQL
+    - apache
+    - phpMyAdmin
+    - Práctica 1 ABD
 ---
 
 ## Instalación

@@ -2,6 +2,13 @@
 title: "Despliegue de aplicaciones de java usando tomcat"
 date: 2023-01-24T02:45:29+01:00
 draft: false
+image: featured.png
+categories:
+    - documentación
+    - Implantación de Aplicaciones Web
+tags:
+    - java
+    - Apache Tomcat
 ---
 
 ## Tarea 1 Desarrollo y despliegue de una aplicación Java simple

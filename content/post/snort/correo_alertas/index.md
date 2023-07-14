@@ -2,8 +2,13 @@
 title: "Envío de alertas de Snort utilizando postfix"
 date: 2022-10-14T13:53:06+02:00
 draft: false
-tags: ["postfix","snort"]
-categories: ["Documentación"]
+image: featured.png
+categories:
+    - documentación
+    - Seguridad y Alta Disponibilidad
+tags:
+    - correo
+    - snort
 ---
 
 En esta entrada vamos a configurar un servidor de correos postfix para poder monitorizar las alertas que da snort de manera remota. Para ello vamos a utilizar el servidor por medio del comando swatch, que se encargará de comprobar el log de snort.

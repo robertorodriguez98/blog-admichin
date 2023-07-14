@@ -2,7 +2,13 @@
 title: "Ansible: Escenario router-nat"
 date: 2022-10-18T13:49:56+02:00
 draft: false
-tags: ["ansible","vagrant"]
+image: featured.png
+categories:
+    - documentación
+    - Servicios de Red e Internet
+tags:
+    - Ansible
+    - Vagrant
 ---
 
 Creación del siguiente escenario con un cliente y un router-nat utilizando **vagrant** y **ansible**
