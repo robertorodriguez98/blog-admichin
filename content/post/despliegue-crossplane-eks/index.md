@@ -1,7 +1,17 @@
 ---
 title: "Despliegue de EKS usando CrossPlane + ArgoCD"
-date: 2023-07-14T03:52:34+02:00
-draft: true
+date: 2023-06-01T03:52:34+02:00
+draft: 
+image: featured.png
+categories:
+    - documentación
+    - proyecto final
+tags:
+    - IaC
+    - kubernetes
+    - AWS
+    - Crossplane
+    - ArgoCD
 ---
 
 ## Objetivos que se quieren conseguir
@@ -301,3 +311,123 @@ Tras aproximadamente **15 minutos**, el clúster estará creado junto a sus nodo
 El escenario final de la demo es el siguiente:
 
 ![Escenario](https://i.imgur.com/5KqPm1R.png)
+
+Y el flujo de trabajo en el que consiste la primera demo, con el clúster ya desplegado es el siguiente:
+
+1. Se realiza un commit a **github** con un cambio en el manifiesto **aws-eks.yaml**, concretamente se cambia el número de nodos que va a tener el clúster de EKS.
+2. **ArgoCD** se da cuenta de que se han realizado cambios en el repositorio, y, aplicando la metodología **gitops**, hace que en los recursos que gestiona se vean reflejados dichos cambios. Compruebo que en el panel de la aplicación se ve reflejado el cambio en el recurso **nodegroup**.
+3. **Crossplane**, haciendo uso del provider de AWS, se comunica con la API referente a EKS, e indica que el número de nodos ha cambiado.
+4. Finalmente, en **AWS** se hacen efectivos los cambios, por lo que podemos comprobarlo accediendo a la consola de **EKS** y viendo el nuevo nodo.
+
+![Demo1](https://i.imgur.com/5Up9qo2.png)
+
+Tras ello, para demostrar el funcionamiento de Crossplane, y como este asegura que se siga el marco de trabajo **GitOps**, se añade un nodo desde la consola de AWS, mostrando como Crossplane lo detecta y vuelve a dejarlo como está definido en los recursos.
+
+### Despliegue en el clúster
+
+Una vez con el clúster, se va a desplegar una aplicación sobre él, utilizando también crossplane. El escenario es el siguiente:
+
+![Escenario2](https://i.imgur.com/ZqjeuTb.png)
+
+#### Configuración del proveedor de kubernetes
+
+Para configurar el proveedor de kubernetes para que tenga acceso al clúster que acabamos de crear, se ejecutan los siguientes comandos; Primero obtenemos el **kubeconfig** y lo guardamos en un fichero:
+
+```bash
+kubectl --namespace crossplane-system \
+    get secret proyecto-eks-cluster \
+    --output jsonpath="{.data.kubeconfig}" \
+    | base64 -d >kubeconfig.yaml
+```
+
+Enviamos el contenido del fichero a la variable KUBECONFIG:
+
+```bash
+KUBECONFIG=$(<kubeconfig.yaml)
+```
+
+Usando la variable, creamos un secret que pueda usar el proveedor:
+
+```bash
+kubectl -n crossplane-system create secret generic cluster-config --from-literal=kubeconfig="${KUBECONFIG}"
+```
+
+Ahora, añadimos la configuración del proveedor usando el secret (el fichero está en la raiz del repositorio). El archivo es: [config-kubernetes.yaml](https://github.com/robertorodriguez98/proyecto-integrado/blob/main/config-kubernetes.yaml):
+
+```bash
+kubectl apply -f config-kubernetes.yaml
+```
+
+#### Script
+
+Para facilitar la ejecución de la demo, se ha creado el script [configurar-k8s.sh](https://github.com/robertorodriguez98/proyecto-integrado/blob/main/scripts/configurar-k8s.sh) que aúna los pasos anteriores.
+
+#### Aplicación de ArgoCD
+
+Una vez realizados los pasos anteriores, solo queda desplegar la aplicación. Para ello se va a volver a utilizar ArgoCD; en este caso se va a utilizar la aplicación [despliegue-remoto.yaml](https://github.com/robertorodriguez98/proyecto-integrado/blob/main/despliegue-remoto.yaml). Una vez desplegado, se ve así en ArgoCD
+
+![ArgoCD2](https://i.imgur.com/8RSAr3s.png)
+
+para obtener la dirección en la que está la aplicación desplegada (gracias al loadbalancer) se utiliza el siguiente comando:
+
+```bash
+kubectl describe object loadbalancer-aplicacion-remoto
+```
+
+O si queremos la dirección directamente:
+
+```bash
+kubectl describe object loadbalancer-aplicacion-remoto | egrep "Hostname"
+```
+
+En la captura el comando es "k" ya que tengo un alias para el comando kubectl.
+
+![hostname](https://i.imgur.com/hnPYe2c.png)
+
+Finalmente, si accedemos a la dirección podemos visualizar la aplicación desplegada:
+
+![app](https://i.imgur.com/ak5QzBW.png)
+
+## Dificultades encontradas
+
+### Despliegue sobre AWS
+
+Las principales dificultades que se han encontrado a la hora de desplegar sobre AWS son las siguientes:
+
+* **Falta de documentación/ejemplos**: Al tratarse de una tecnología relativamente nueva y con una comunidad todavía en crecimiento, no ha sido fácil encontrar ejemplos que aplicaran la api de **AWS** para desplegar específicamente sobre **EKS**.
+* **Múltiples proveedores**: A la hora de elegir el proveedor en el marketplace, resulta que para Amazon Web Services existen **dos diferentes**, y en la documentación, dependiendo de la versión que se esté consultando, usan uno u otro, teniendo éstos **diferentes métodos y llamadas**.Se ha utilizado finalmente el siguiente, debido a que hay más documentación sobre él: https://marketplace.upbound.io/providers/crossplane-contrib/provider-aws/v0.39.0
+* **Coste**: El uso de EKS no se encuentra dentro de la **capa gratuita de AWS**, por lo que desplegar un clúster conlleva un gasto económico (aunque no muy alto).
+
+### Despliegue sobre kubernetes
+
+Desplegando sobre kubernetes he tenido otras problemáticas. Son las siguientes:
+
+* **Falta de documentación/ejemplos**: Al ser una extensión de **Crossplane**, los problemas relacionados con la falta de comunidad también se aplican al proveedor de kubernetes.
+* **Pocas explicaciones**: Existe un repositorio oficial con ejemplos, pero para que estos funcionen sobre un clúster en **AWS** hay que realizar **pasos extra** que no explican.
+* **Caducidad**: Las credenciales que se utilizan para crear el **secret** de kubernetes que permite la conexión, caducan a los **30 minutos**. 
+
+## Conclusión
+
+Con la realización del proyecto hemos podido comprender mejor la **infraestructura como código**, así como la implementación de ésta por medio de una nueva tecnología que es **Crossplane**, aplicando este conocimiento a desplegar un clúster de EKS en Amazon Web Services y una aplicación dentro  del mismo, haciendo uso de un **entorno con múltiples proveedores**, aprovechando las funcionalidades que este ofrece. Al ser Crossplane una herramienta tan versátil y potente, hay muchas cosas que se pueden hacer que no se han llegado a tocar en el proyecto. 
+
+También, y, a consecuencia del tema del proyecto, hemos aprendido acerca de la metodología **GitOps** y cómo aplicarla utilizando **ArgoCD**, que sirve a la perfección para este propósito gracias al funcionamiento de sus aplicaciones basadas en repositorios de GitHub.
+
+Finalmente, se ha profundizado en el funcionamiento de **kubernetes**, aprendiendo acerca del plano de control  y de las diferentes APIs que gestionan los recursos.
+
+En conclusión, Crossplane es una herramienta muy **polifacética y útil**, siendo su principal virtud, **trasladar la infraestructura como código al terreno de kubernetes**, haciendo así que sea especialmente atractiva, y, tras un poco de aprendizaje, una herramienta a tener en cuenta de cara a **desplegar infraestructura**.
+
+## Bibliografía
+
+* Crossplane on Amazon EKS (canal Containers from the Couch): https://www.youtube.com/live/aWRWKnniqeM?feature=share
+* Documentación de Crossplane: https://docs.crossplane.io/v1.12/
+* Proveedores de Crossplane: https://docs.crossplane.io/latest/concepts/providers/
+* Documentación de la api de los diferentes proveedores:
+    * AWS: https://doc.crds.dev/github.com/crossplane/provider-aws
+    * Helm: https://doc.crds.dev/github.com/crossplane-contrib/provider-helm
+    * K8s: https://doc.crds.dev/github.com/crossplane-contrib/provider-kubernetes
+* AWS Quickstart: https://docs.crossplane.io/v1.12/getting-started/provider-aws/
+* Production ready EKS Cluster with Crossplane: https://www.kloia.com/blog/production-ready-eks-cluster-with-crossplane
+* GitOps model for provisioning and bootstrapping Amazon EKS clusters using Crossplane and Flux: https://aws.amazon.com/es/blogs/containers/gitops-model-for-provisioning-and-bootstrapping-amazon-eks-clusters-using-crossplane-and-flux/
+* Ejemplos del proveedor de kubernetes: https://github.com/crossplane-contrib/provider-kubernetes
+
+
