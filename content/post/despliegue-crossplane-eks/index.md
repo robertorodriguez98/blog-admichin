@@ -14,6 +14,22 @@ tags:
     - ArgoCD
 ---
 
+## Descripción
+
+El objetivo del proyecto es, utilizando Crossplane, desplegar un clúster de eks y luego sobre éste desplegar una aplicación web estática utilizando para ambos casos como apoyo ArgoCD.
+
+A pesar de existir una alternativa de IaC como terraform, se ha decidido usar Crossplane ya que permite utilizar los comandos nativos de kubernetes para gestionar todos sus recursos, al ser una extensión del mismo.
+
+Todos los manifiestos y archivos de configuración se encuentran en el siguiente [repositorio](https://github.com/robertorodriguez98/proyecto-integrado).
+
+Pincha aquí para ir directamente a la configuración del [**escenario realizado**](#escenario-realizado) o aquí para ir directamente a las [**demos**](#demostraciones).
+
+También en la página de los proyectos integrados se pueden encontrar la documentación en formato pdf, la presentación, y el vídeo de demostración:
+
+https://dit.gonzalonazareno.org/gestiona/proyectos/
+
+
+
 ## Objetivos que se quieren conseguir
 
 Los objetivos que se quieren conseguir son los siguientes:
