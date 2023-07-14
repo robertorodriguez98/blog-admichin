@@ -2,6 +2,15 @@
 title: "Aplicacion web Oracle"
 date: 2022-10-30T17:08:54+01:00
 draft: false
+image: featured.png
+categories:
+    - práctica
+    - Administración de Bases de Datos
+tags:
+    - Oracle
+    - apache
+    - python
+    - Práctica 1 ABD
 ---
 
 Aplicación web Oracle programada en python.

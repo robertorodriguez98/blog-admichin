@@ -28,7 +28,7 @@ También en la página de los proyectos integrados se pueden encontrar la docume
 
 https://dit.gonzalonazareno.org/gestiona/proyectos/
 
-
+---
 
 ## Objetivos que se quieren conseguir
 

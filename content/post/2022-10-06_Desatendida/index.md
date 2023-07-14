@@ -2,7 +2,6 @@
 title: "Instalación de Debian desatendida"
 date: 2022-10-06T7:00:09+02:00
 draft: false
-tags: ["Debian","preseed"]
 image: featured.png
 categories:
     - documentación

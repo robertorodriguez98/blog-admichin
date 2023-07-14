@@ -1,7 +1,7 @@
 ---
 title: "Taller 1"
 date: 2022-10-03T12:56:47+02:00
-draft: false
+draft: true
 ---
 # Taller 1:Introducción a git y GitHub 
 

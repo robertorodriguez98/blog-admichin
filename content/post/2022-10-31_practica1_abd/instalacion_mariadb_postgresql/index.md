@@ -2,6 +2,7 @@
 title: "Instalación de MariaDB y PostgreSQL en Debian"
 date: 2022-10-26T09:32:09+02:00
 draft: false
+image: featured.png
 categories:
     - práctica
     - Administración de Bases de Datos

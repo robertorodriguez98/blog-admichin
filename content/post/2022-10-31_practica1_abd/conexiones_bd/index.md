@@ -10,6 +10,7 @@ tags:
     - MariaDB
     - Oracle
     - PostgreSQL
+    - Práctica 1 ABD
 ---
 
 Vamos a realizar conexiones desde los clientes de BBDD a sus respectivos servidores.
