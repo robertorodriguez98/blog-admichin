@@ -1,5 +1,5 @@
 #!/bin/bash
 
 hugo
-rsync -azP public/* calcetines@nodriza.admichin.es:/home/calcetines/blog/
+rsync -azP public/* calcetines@nodriza.robertops.com:/home/calcetines/blog/
 
